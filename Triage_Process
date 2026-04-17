@@ -1,0 +1,38 @@
+# Alert Triage Process - Home Lab SIEM
+
+**Date**: April 15, 2026  
+**Rule Name**: Brute force attempts  
+**Total Alerts Generated**: 7 (High Severity)
+
+## Triage Summary
+
+All alerts were **intentional test activity** generated during the SIEM lab setup.
+
+| Timestamp              | Source IP     | Target Host   | Attempts | Reason                          | Triage Result       | Action Taken       |
+|------------------------|---------------|---------------|----------|---------------------------------|---------------------|--------------------|
+| 19:21:08               | 127.0.0.1     | windows10     | ~30+     | Lab-generated failed logons     | Benign (Test)       | No action required |
+| 19:17:44               | 127.0.0.1     | windows10     | ~30+     | Lab-generated failed logons     | Benign (Test)       | No action required |
+| 19:12:42               | 127.0.0.1     | windows10     | Multiple | Lab-generated failed logons     | Benign (Test)       | No action required |
+| ... (similar entries)  | 127.0.0.1     | windows10     | -        | Test traffic                    | Benign (Test)       | No action required |
+
+## Triage Steps Performed
+1. Checked Source IP → Confirmed as localhost (127.0.0.1) from my own test scripts.
+2. Verified target host → `windows10` VM used for lab.
+3. Reviewed raw events → Confirmed they were generated using `net use` commands.
+4. Cross-checked with dashboard → Matched the spike in failed logins.
+5. Conclusion → False positive / Controlled test activity.
+
+## Screenshots Included
+- Dashboard showing failed login spikes
+- Alerts list with 7 high-severity brute force alerts
+- Individual alert investigation view
+
+## Key Takeaway
+This exercise demonstrated the full lifecycle:
+**Log Ingestion → Visualization → Detection → Alerting → Triage**
+
+Even though all alerts were benign, the process mirrors real SOC workflows for handling brute-force detection.
+
+---
+
+**Status**: All alerts successfully triaged and documented.
